@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finansar</title>
+</head>
+
+<body>
+    <h1>Finansar</h1>
+    <label for="mes">Select the month:</label>
+    <input type="month" id="mes" name="mes"><br><br>
+    <label for="tipo">Select the type:</label>
+    <select id="tipo" name="tipo">
+        <option value="recebimentos">Receives</option>
+        <option value="gastos">Spends</option>
+    </select><br><br>
+    <button id="buscar-btn" onclick="criar_tabela()">Buscar</button><br><br>
+    <div id="resultado"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
