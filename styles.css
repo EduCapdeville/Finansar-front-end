@@ -4,36 +4,72 @@
     padding: 0;
 }
 
+.container-ultimate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .container {
     text-align: center;
     margin-top: 30px;
 }
 
+
 .navbar {
+    overflow: hidden;
     background-color: #0047ab;
-    height: 60px;
 }
 
-table {
-    text-align: center;
+#resultado {
+    margin-top: 20px;
 }
 
 td {
-    margin: 10px;
-    padding: 10px;
+    margin: 30px;
+    padding: 30px;
+    text-align: center;
 }
 
+th {
+    background-color: #0047ab;
+    color: white;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
 h1 {
-    align-items: center;
     margin-left: 10px;
     color: white;
 }
 
+label {
+    font-size: 20px;
+}
+
 button {
+    padding: 10px 20px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #0047ab;
+    border-color: transparent;
+    border-radius: 15px;
+    transition: 0.3s ease-in;
 }
 
 button:hover {
+    background-color: transparent;
+    border: 2px solid #0047ab;
+    box-shadow: 0 0 10px #003681;
+    color: #0047ab;
+    transition: 0.3s ease-in;
+    font-weight: bold;
+}
+
+button:active {
     transform: scale(1.1);
-    transition: 0.5s;
+    transition: 100ms;
 }

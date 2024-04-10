@@ -14,18 +14,19 @@
         <h1>Finansar</h1>
     </div>
 
-    <div class="container">
-        <label for="mes">Selecione o mês:</label>
-        <input type="month" id="mes" name="mes"><br><br>
-        <label for="tipo">Selecione o tipo:</label>
-        <select id="tipo" name="tipo">
-            <option class="selecionar-tipo" value="recebimentos">Recebimentos</option>
-            <option class="selecionar-tipo" value="gastos">Gastos</option>
-        </select><br><br>
-        <button id="buscar-btn" onclick="criar_tabela()">Buscar</button><br><br>
+    <div class="container-ultimate">
+        <div class="container">
+            <label for="mes">Selecione o mês:</label>
+            <input type="month" id="mes" name="mes"><br><br>
+            <label for="tipo">Selecione o tipo:</label>
+            <select id="tipo" name="tipo">
+                <option class="selecionar-tipo" value="recebimentos">Recebimentos</option>
+                <option class="selecionar-tipo" value="gastos">Gastos</option>
+            </select><br><br>
+            <button id="buscar-btn" onclick="criar_tabela()">Buscar</button><br><br>
+        </div>
+        <div id="resultado"></div>
     </div>
-    <div id="resultado"></div>
-
     <script src="script.js"></script>
 </body>
 

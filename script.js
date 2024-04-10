@@ -6,6 +6,7 @@ function convert(jsonData) {
     let table = document.createElement("table");
 
     let cols = Object.keys(jsonData[0]);
+    cols[3] = "Descrição";
 
     let tr = document.createElement("tr");
 
@@ -20,6 +21,13 @@ function convert(jsonData) {
         let tr = document.createElement("tr");
 
         let vals = Object.values(item);
+        
+        let BRL = new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        });
+
+        vals[1] = BRL.format(vals[1]);
 
         vals.forEach((elem) => {
             let td = document.createElement("td");
