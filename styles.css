@@ -1,0 +1,39 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.navbar {
+    background-color: #0047ab;
+    height: 60px;
+}
+
+table {
+    text-align: center;
+}
+
+td {
+    margin: 10px;
+    padding: 10px;
+}
+
+h1 {
+    align-items: center;
+    margin-left: 10px;
+    color: white;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}

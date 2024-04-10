@@ -1,6 +1,7 @@
 function convert(jsonData) {
 
     let resultado = document.getElementById("resultado");
+    resultado.innerHTML = '';
 
     let table = document.createElement("table");
 
@@ -30,17 +31,40 @@ function convert(jsonData) {
     resultado.appendChild(table)
 }
 
-async function get_transactions_by_year_and_month(mes, ano) {
-    let alberto = await fetch('http://localhost:8000/transactions'.concat('/', ano, '/', mes), {
+async function get_transactions_by_year_and_month(tipo, mes, ano) {
+    let itgo = await fetch('http://localhost:8000/transactions'.concat('/', tipo, '/', ano, '/', mes), {
         method: "GET"
-    }).then((response) => response.json())
+    }).then((response) => {
+        if(response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response.statusText)
+        }
+    })
 
-    return alberto;
+    return itgo;
 
 }
 
 async function criar_tabela() {
-    let jsonData = await get_transactions_by_year_and_month(3, 2024);
+    let tipo = document.getElementById("tipo").value
+    let data = document.getElementById("mes").value.split('-')
+
+    if(data[0] === '') {
+        alert("Escolha uma data!");
+        return;
+    }
+    
+    let jsonData;
+
+    try {
+        jsonData = await get_transactions_by_year_and_month(tipo, data[1], data[0]);
+    } catch (error) {
+        alert("Esse mês não foi encontrado no banco de dados.")
+        location.reload();
+        return;
+    }
 
     convert(jsonData);
 }
