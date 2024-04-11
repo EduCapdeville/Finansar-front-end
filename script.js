@@ -39,7 +39,7 @@ function convert(jsonData) {
     resultado.appendChild(table)
 }
 
-async function get_transactions_by_year_and_month(tipo, mes, ano) {
+async function getTransactionsByYearAndMonth(tipo, mes, ano) {
     let itgo = await fetch('http://localhost:8000/transactions'.concat('/', tipo, '/', ano, '/', mes), {
         method: "GET"
     }).then((response) => {
@@ -55,7 +55,7 @@ async function get_transactions_by_year_and_month(tipo, mes, ano) {
 
 }
 
-async function criar_tabela() {
+async function criarTabela() {
     let tipo = document.getElementById("tipo").value
     let data = document.getElementById("mes").value.split('-')
 
@@ -67,7 +67,7 @@ async function criar_tabela() {
     let jsonData;
 
     try {
-        jsonData = await get_transactions_by_year_and_month(tipo, data[1], data[0]);
+        jsonData = await getTransactionsByYearAndMonth(tipo, data[1], data[0]);
     } catch (error) {
         alert("Esse mês não foi encontrado no banco de dados.")
         location.reload();
