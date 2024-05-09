@@ -9,12 +9,18 @@
     <title>Finansar</title>
 </head>
 
-<body>
-    <div class="navbar">
-        <h1>Finansar</h1>
-    </div>
+<body onload="getPageContent('home')">
+    <header>
+        <h1 class="logo">Finansar</h1>
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Transactions</a>
+        </nav>
+    </header>
 
-    <div class="container-ultimate">
+    <div class="home espaco-superior" id="content">
         <div class="container">
             <label for="mes">Selecione o mês:</label>
             <input type="month" id="mes" name="mes"><br><br>
@@ -23,11 +29,16 @@
                 <option class="selecionar-tipo" value="recebimentos">Recebimentos</option>
                 <option class="selecionar-tipo" value="gastos">Gastos</option>
             </select><br><br>
-            <button id="buscar-btn" onclick="criar_tabela()">Buscar</button><br><br>
+            <label for="transacao_id">N.º localizador da transação:</label>
+            <input type="text" id="transacao_id" name="transacao_id"><br><br>
+            <label for="nova_categoria">Nova Categoria:</label>
+            <input type="text" id="nova_categoria" name="nova_categoria"><br><br>
+            <button id="atualizar-categoria-btn" onclick="atualizarCategoria()">Atualizar Categoria</button><br><br>
+            <button id="buscar-btn" onclick="criarTabela()">Buscar</button><br><br>
         </div>
         <div id="resultado"></div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" ></script>
 </body>
 
 </html>

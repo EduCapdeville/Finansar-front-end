@@ -1,13 +1,61 @@
+:root {
+    --azul-principal: rgb(0, 53, 128);
+    --branco-principal: rgb(255, 255, 255);
+    --azul-variante-claro: rgb(0, 71, 171);
+    --color-4: rgb(0, 132, 255);
+    --color-5: rgb(12, 83, 182);
+}
+
+
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container-ultimate {
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: var(--azul-principal);
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    color: var(--branco-principal);
+    font-size: 43px;
+    color: var(--branco-principal);
+    font-weight: 700;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 18px;
+    color: var(--branco-principal);
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--branco-principal);
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
 }
 
 .container {
@@ -15,14 +63,11 @@
     margin-top: 30px;
 }
 
-
-.navbar {
-    overflow: hidden;
-    background-color: #0047ab;
-}
-
 #resultado {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 td {
@@ -32,15 +77,35 @@ td {
 }
 
 th {
-    background-color: #0047ab;
+    background-color: var(--azul-variante-claro);
     color: white;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-h1 {
-    margin-left: 10px;
-    color: white;
+#content {
+    text-align: center;
+}
+
+.Home {
+    color: #2e2e2e;
+    font-size: 100px;
+}
+
+.Home span {
+    color: var(--azul-variante-claro);
+    text-shadow: 0 0 10px var(--azul-principal);
+}
+
+.whos {
+    padding-top: 100px;
+    font-size: 30px;
+}
+
+.espaco-superior {
+    padding-top: 150px;
 }
 
 label {
@@ -53,23 +118,13 @@ button {
     text-align: center;
     text-decoration: none;
     outline: none;
-    color: #fff;
-    background-color: #0047ab;
+    color: var(--branco-principal);
+    background-color: var(--azul-variante-claro);
     border-color: transparent;
     border-radius: 15px;
-    transition: 0.3s ease-in;
+    transition: ease-in;
 }
 
 button:hover {
-    background-color: transparent;
-    border: 2px solid #0047ab;
-    box-shadow: 0 0 10px #003681;
-    color: #0047ab;
-    transition: 0.3s ease-in;
-    font-weight: bold;
-}
-
-button:active {
-    transform: scale(1.1);
-    transition: 100ms;
+    background-color: var(--azul-principal);
 }
