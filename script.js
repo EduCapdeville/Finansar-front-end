@@ -21,13 +21,13 @@ function convert(jsonData) {
         let tr = document.createElement("tr");
 
         let vals = Object.values(item);
-        
+
         let BRL = new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL',
         });
 
-        vals[1] = BRL.format(vals[1]);
+        vals[2] = BRL.format(vals[2]);
 
         vals.forEach((elem) => {
             let td = document.createElement("td");
@@ -43,7 +43,7 @@ async function getTransactionsByYearAndMonth(tipo, mes, ano) {
     let itgo = await fetch('http://localhost:8000/transactions'.concat('/', tipo, '/', ano, '/', mes), {
         method: "GET"
     }).then((response) => {
-        if(response.ok) {
+        if (response.ok) {
             return response.json()
         }
         else {
@@ -59,11 +59,11 @@ async function criarTabela() {
     let tipo = document.getElementById("tipo").value
     let data = document.getElementById("mes").value.split('-')
 
-    if(data[0] === '') {
+    if (data[0] === '') {
         alert("Escolha uma data!");
         return;
     }
-    
+
     let jsonData;
 
     try {
@@ -75,4 +75,34 @@ async function criarTabela() {
     }
 
     convert(jsonData);
+}
+
+async function atualizarCategorias(){
+    let id = document.getElementById("transacao_id").value
+    let categoria = document.getElementById("nova_categoria").value
+
+    let jsonData;
+
+    try {
+        jsonData = await atualizeCategories(id, categoria)
+    } catch (error) {
+        alert("Não foi possivel.")
+        location.reload();
+        return;
+    }
+}
+
+async function atualizeCategories(transacao_id, categoria) {
+    let burn = await fetch('http://localhost:8000/transactions'.concat('/', transacao_id, '/', categoria), {
+        method: "PUT"
+    }).then((response) => {
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response.statusText)
+        }
+    })
+
+    return burn;
 }
