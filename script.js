@@ -42,12 +42,12 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
 
         let caixaDeTexto = document.createElement("input")
         caixaDeTexto.setAttribute("type", "text")
-        caixaDeTexto.setAttribute("id", dado.Localizador)
+        caixaDeTexto.setAttribute("id", `nova_categoria_${dado.Localizador}`)
         caixaDeTexto.setAttribute("value", dado.Categoria)
 
         let buttonCategoria = document.createElement("button");
-        buttonCategoria.setAttribute("id", "atualizar-categoria-btn")
-        buttonCategoria.setAttribute('onclick', 'atualizarCategorias()');
+        buttonCategoria.setAttribute("id", `atualizar-categoria-btn_${dado.Localizador}` )
+        buttonCategoria.setAttribute('onclick', `atualizarCategorias(${dado.Localizador})`);
         buttonCategoria.innerText = "Atualizar Categoria"
 
         tdCategoria.appendChild(caixaDeTexto)
@@ -105,10 +105,9 @@ async function criarTabela() {
     convert(jsonData);
 }
 
-async function atualizarCategorias() {
+async function atualizarCategorias(id) {
 
-    let id = document.getElementById("transacao_id").value
-    let categoria = document.getElementById(id).value
+    let categoria = document.getElementById("nova_categoria_" + id).value
 
     let jsonData;
 
