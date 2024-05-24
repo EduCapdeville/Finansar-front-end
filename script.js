@@ -4,7 +4,7 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
     let thead = document.createElement("thead"); // declarando a função thead como sendo o thead no HTML
     let headerRow = document.createElement("tr"); // declarando a função headerRow como sendo o tr no HTML, que aqui vai ser a linha de cabeçalho
 
-    let headers = ["Localizador", "Data", "Valor", "Tipo", "Descricao", "Categoria"]; // criando o array headers com as chaves do array de objetos para usar como os headers da tabela
+    let headers = ["Data", "Valor", "Tipo", "Descricao", "Categoria"]; // criando o array headers com as chaves do array de objetos para usar como os headers da tabela
     headers.forEach(headerText => { // usando o método forEach para dizer que para cada dado (headerText) do array headers vai fazer tal coisa
         let th = document.createElement("th");// criando a variavel th como sendo o elemento th da tabela HTML
         th.innerText = headerText; // usando a propriedade innerText no th, passando oque vai estar escrito em cada th, que no caso são os dados do array
@@ -18,9 +18,6 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
 
     dados.forEach(dado => { // usando o método forEach no objeto dados, para dizer que para cada dado do array de objetos vai acontecer tal coisa
         let tr = document.createElement("tr");// declarando a variavel tr como sendo o elemento tr do HTML
-        let tdLocalizador = document.createElement("td");// declarando a variável tdLocalizador como sendo um elemento td do HTML
-        tdLocalizador.innerText = dado.Localizador;// usando a propriedade innerText, passando que o texto do elemento tdLocalizador vai ser o valor da chave Localizador
-        tr.appendChild(tdLocalizador);// appendendo o tdLocalizador à linha tr 
 
         let tdData = document.createElement("td"); // declarando a variável tdData como sendo um elemento td do HTML
         tdData.innerText = dado.Data;// usando a propriedade innerText, passando que o texto do elemento tdData vai ser o valor da chave data
