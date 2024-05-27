@@ -140,7 +140,7 @@ button:hover {
 
 .input-style[disabled] {
     background-color: transparent;
-    border: none;
+    border: 2px solid transparent;
     color: black;
 }
 

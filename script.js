@@ -49,11 +49,11 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
         imgEdit.src = 'img/lapis.png'// passando que esse elemento img vai ter como source a pasta img e o arquivo lapis.png
         
         let buttonEdit = document.createElement("button");// declarando a variável buttonEdit como sendo um elemento button
-        buttonEdit.setAttribute("class", "ativar-input");// colocando uma classe no botao para estiliza-lo
+        buttonEdit.setAttribute("class", "editar-button");// colocando uma classe no botao para estiliza-lo
         buttonEdit.appendChild(imgEdit);// colocando a imgEdit dentro no botão
         buttonEdit.addEventListener("click", function () {// adicionando um evento de click
             caixaDeTexto.disabled = false;// quando o botao for clicado vai ativar o input
-            buttonEdit.style.display = "none";// o buttonEdit vai sumir
+            buttonEdit.style.display = "none";// o buttonEdit aparece invisivel
             buttonCategoria.style.display = "inline";// e o buttonCategoria vai aparecer com o display inline
             caixaDeTexto.focus();// colocando o foco no input quando o botão for clicado
         });
@@ -90,6 +90,14 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
     tabelaContainer.innerHTML = "";
     tabelaContainer.appendChild(table);
 };
+
+function filter() {
+    let filterCategoria =  document.getElementById("filtro").value
+
+    if (filterCategoria.value === 'categoria') {
+
+    }
+}
 
 
 async function getTransactionsByYearAndMonth(tipo, mes, ano) {
