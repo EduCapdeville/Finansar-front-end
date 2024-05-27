@@ -72,7 +72,6 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
             caixaDeTexto.disabled = true;// quando o botão for clicado o input vai ser desativado
             buttonEdit.style.display = "inline";// o buttonEdit vai voltar a aparecer com o display inline
             buttonCategoria.style.display = "none";// o buttonCategoria vai sumir
-            alert("Categoria atualizada com sucesso!")// adicionando um alerta quando a categoria for atualizada com sucesso
         });
 
 
@@ -139,8 +138,7 @@ async function atualizarCategorias(id) {
 
     try {
         jsonData = await atualizeCategories(id, categoria);
-        // document.querySelector(`#nova_categoria_${id}`).value = categoria;
-        // alert("Categoria atualizada com sucesso!");
+        alert("Categoria atualizada com sucesso!")// adicionando um alerta quando a categoria for atualizada com sucesso
     } catch (error) {
         alert("Não foi possivel atualizar a categoria.")
         location.reload();
