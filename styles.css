@@ -129,8 +129,22 @@ button:hover {
     background-color: var(--azul-principal);
 }
 
-#editarCategoria {
+.input-style {
     padding: 10px;
     margin: 10px;
-    align-self: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-style[disabled] {
+    background-color: transparent;
+    border: none;
+    color: black;
+}
+
+.input-style:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
