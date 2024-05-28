@@ -1,10 +1,9 @@
 function convert(dados) { // declarando a função criarTabela e passando o array de objeto "dados" como parâmetro
     let table = document.createElement("table"); // declarando a variável table como sendo a tabela criada no HTML
-
     let thead = document.createElement("thead"); // declarando a função thead como sendo o thead no HTML
     let headerRow = document.createElement("tr"); // declarando a função headerRow como sendo o tr no HTML, que aqui vai ser a linha de cabeçalho
-
     let headers = ["Data", "Valor", "Tipo", "Descricao", "Categoria"]; // criando o array headers com as chaves do array de objetos para usar como os headers da tabela
+
     headers.forEach(headerText => { // usando o método forEach para dizer que para cada dado (headerText) do array headers vai fazer tal coisa
         let th = document.createElement("th");// criando a variavel th como sendo o elemento th da tabela HTML
         th.innerText = headerText; // usando a propriedade innerText no th, passando oque vai estar escrito em cada th, que no caso são os dados do array
@@ -23,9 +22,15 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
         tdData.innerText = dado.Data;// usando a propriedade innerText, passando que o texto do elemento tdData vai ser o valor da chave data
         tr.appendChild(tdData);// appendendo o tdData à linha tr 
 
+        let BRL = new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        });
+       
         let tdValor = document.createElement("td"); // declarando a variável tdValor como sendo um elemento td do HTML
-        tdValor.innerText = dado.Valor;// usando a propriedade innerText, passando que o texto do elemento tdValor vai ser o valor da chave Valor
+        tdValor.innerText = BRL.format(dado.Valor);// usando a propriedade innerText, passando que o texto do elemento tdValor vai ser o valor formatado para BRL, da chave Valor
         tr.appendChild(tdValor);// appendendo o tdValor à linha tr 
+
 
         let tdTipo = document.createElement("td");// declarando a variável tdTipo como sendo um elemento td do HTML
         tdTipo.innerText = dado.Tipo;// usando a propriedade innerText, passando que o texto do elemento tdTipo vai ser o valor da chave Tipo
@@ -44,10 +49,10 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
         caixaDeTexto.setAttribute("value", dado.Categoria);// passando que o valor default vai ser oque estiver na coluna categoria do banco de dados, daquele item.
         caixaDeTexto.disabled = true; // passando que o input vai estar desativado.
 
-        
+
         let imgEdit = document.createElement('img');// declarando uma variável como sendo um elemento img
         imgEdit.src = 'img/lapis.png'// passando que esse elemento img vai ter como source a pasta img e o arquivo lapis.png
-        
+
         let buttonEdit = document.createElement("button");// declarando a variável buttonEdit como sendo um elemento button
         buttonEdit.setAttribute("class", "editar-button");// colocando uma classe no botao para estiliza-lo
         buttonEdit.appendChild(imgEdit);// colocando a imgEdit dentro no botão
@@ -61,7 +66,7 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
         let imgDone = document.createElement('img');// declarando uma variável como sendo um elemento img
         imgDone.src = 'img/verificar.png';// passando que esse elemento img vai ter como source a pasta img e o  arquivo verificar.png
 
-        
+
         let buttonCategoria = document.createElement("button");// declarando a variável buttonCategoria como sendo um elemento button
         buttonCategoria.setAttribute("id", `atualizar-categoria-btn_${dado.Localizador}`);// setando o atributo id e passando que ele vai ser atualizar-categoria-btn_{numero do localizador} 
         buttonCategoria.setAttribute("class", "att-category");// colocando uma classe no botão para estiliza-lo
@@ -91,12 +96,9 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
     tabelaContainer.appendChild(table);
 };
 
-function filter() {
-    let filterCategoria =  document.getElementById("filtro").value
-
-    if (filterCategoria.value === 'categoria') {
-
-    }
+function summary() {
+    let buttonSummary = document.createElement('button')
+    buttonSummary
 }
 
 
@@ -146,7 +148,6 @@ async function atualizarCategorias(id) {
 
     try {
         jsonData = await atualizeCategories(id, categoria);
-        alert("Categoria atualizada com sucesso!")// adicionando um alerta quando a categoria for atualizada com sucesso
     } catch (error) {
         alert("Não foi possivel atualizar a categoria.")
         location.reload();

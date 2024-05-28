@@ -14,48 +14,88 @@
     box-sizing: border-box;
 }
 
-header {
+nav.menu-lateral {
+    width: 60px;
+    height: 100%;
+    background-color: var(--azul-principal);
+    padding: 40px 0px 40px 0;
+    box-shadow: 3px 0 0 var(--azul-variante-claro);
+
     position: fixed;
     top: 0;
     left: 0;
+    overflow: hidden;
+    transition: .5s;
+}
+
+nav.menu-lateral.expandir {
+    width: 300px;
+}
+
+.btn-expandir {
     width: 100%;
-    padding: 20px 100px;
-    background: var(--azul-principal);
+    padding-left: 10px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    padding-bottom: 30px;
 }
 
-.logo {
-    color: var(--branco-principal);
-    font-size: 43px;
-    color: var(--branco-principal);
-    font-weight: 700;
+.btn-expandir > i {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
 }
 
-.navbar a {
-    position: relative;
-    font-size: 18px;
-    color: var(--branco-principal);
-    font-weight: 500;
+.btn-expandir > h1 {
+    color: #fff;
+    font-size: 40px;
+    padding-left: 50px;
+}
+
+ul {
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu:hover {
+    background: var(--azul-variante-claro);
+}
+
+ul li.item-menu {
+    transition: 0.2s;
+}
+
+
+
+ul li.ativo {
+    background-color: var(--azul-variante-claro);
+}
+
+ul li.item-menu a {
+    color: #fff;
     text-decoration: none;
+    font-size: 20px;
+    padding: 20px;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    display: flex;
+    line-height: 40px;
+}
+
+ul li.item-menu a .txt-link {
+    margin-left: 70px;
+    transition: 1s;
+    opacity: 0;
+}
+
+nav.menu-lateral.expandir .txt-link {
     margin-left: 40px;
+    opacity: 1;
 }
 
-.navbar a::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--branco-principal);
-    transition: .3s;
-}
-
-.navbar a:hover::before {
-    width: 100%;
+ul li.item-menu a .icon > i {
+    font-size: 30px;
+    margin-left: 13px;
 }
 
 .container {
