@@ -1,68 +1,33 @@
 import { getSummary } from "./API.js";
 
-function convert(dados) { // criando a função convert, passando como parâmetros dados
-    let table = document.createElement("table"); // criando o elemento table no html
-    table.id = "example"; // adicionando um id à table para inicializar a tabela
-    table.className = "display"; // adiciona a classe necessária para o datatable
-    
-    let thead = document.createElement("thead"); // criando o elemento thead
-    let headerRow = document.createElement("tr"); // criando o elemento tr
-    let headers = ["Mes", "Total"]; // definindo os titulos do cabeçalho da tabela
+async function criarTabela2() { // criando a função criarTabela2
+    let jsonData2;// declarando uma variavel para depois passar o valor dela
 
-    headers.forEach(headerText => { // para cada titulo do cabeçalho
-        let th = document.createElement("th");// cria um elemento th
-        th.innerText = headerText; // passa o titulo para o th
-        headerRow.appendChild(th);// coloca o th no tr
-    });
-
-    thead.appendChild(headerRow); // coloca o tr no thead
-    table.appendChild(thead); // coloca o thead na tabela
-
-    let tbody = document.createElement("tbody"); // cria o tbody
-
-    dados.forEach(dado => { // para cada dado dos dados recebidos
-        let tr = document.createElement("tr");// cria um tr
-
-        let tdMes = document.createElement("td"); //cria um td
-        tdMes.innerText = dado.mes_ano;// coloca o valor da chave mes_ano no innerText do td
-        tr.appendChild(tdMes);// coloca o td no tr
-
-        let BRL = new Intl.NumberFormat('pt-BR', { // cria a variável para mudar os valores para brl
-            style: 'currency',
-            currency: 'BRL',
-        });
-
-        let tdTotal = document.createElement("td"); // cria um td
-        tdTotal.innerText = BRL.format(dado.total_gastos);// formata o valor recebido da chave total_gastos e coloca no innerTexto do td criado anteriormente
-        tr.appendChild(tdTotal);// coloca o td criado anteriormente no tr
-        tbody.appendChild(tr);// coloca o tr no tbody
-    }); 
-
-    table.appendChild(tbody);// coloca o tbody na tabela
-
-    let tabelaContainer = document.getElementById("resultado-saldo"); //pega o elemento com id resultado-saldo 
-    tabelaContainer.innerHTML = "";// limpa o html dentro desse elemento
-    tabelaContainer.appendChild(table);// coloca a tabela criada dentro desse elemento vazio
-
-
-    $(document).ready(function() {// inicializa o datatables depois de adicionar a tabela
-        $('#example').DataTable();
-    });
-};
-
-async function criarTabela2() { 
-
-    let jsonData2;
-
-    try {
-        jsonData2 = await getSummary();
-    } catch (error) {
-        alert("Não foi possível receber o sumário das suas transações");
-        location.reload();
-        return;
+    try {// tentar
+        jsonData2 = await getSummary();// atribuir ao jsondata2 o retorno da função getSummary
+    } catch (error) {// pegar um ero
+        alert("Não foi possível receber o sumário das suas transações");// se pegar um erro alerta isso
+        location.reload();// recarrega a pagina
+        return;// retorna nada.
     }
-
-    convert(jsonData2);
+    $(document).ready(function() { // espera o documento ser carregado completamente para rodar função
+        $('#example').DataTable({// seleciona o elemento com id example e transforma esse elemento em uma tabela do datatables
+            data: jsonData2,// jsondata é a variavel que contem os dados que vao estar na tabela
+            columns: [ // inicia a definição das colunas da tabela
+                { data: 'mes_ano', title: 'Mês' }, // define a primeira coluna da tabela que vai ter como titulo Mês e nas celulas vai exibir os valores da chave mes_ano recebida do back
+                { 
+                    data: 'total_gastos', // define quais serao os valores presentes nas celulas da segunda coluna
+                    title: 'Total',// define o titulo da segunda coluna
+                    render: function(data) {// definindo uma função de renderização personalizada
+                        return new Intl.NumberFormat('pt-BR', { // cria um novo objeto que formata os numeros de acordo com o idioma especificado
+                            style: 'currency',// especifica que o numero deve ser formatado como uma moeda
+                            currency: 'BRL'// define a moeda como real brasileiro
+                        }).format(data);// formata o dado e retorna o valor formatado como uma string
+                    }
+                }
+            ],
+        });
+    });
 }
 
-window.criarTabela2 = criarTabela2;
+window.criarTabela2 = criarTabela2; // 
