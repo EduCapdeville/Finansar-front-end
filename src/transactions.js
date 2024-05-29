@@ -1,5 +1,8 @@
+import { getTransactionsByYearAndMonth } from "./API.js";
+import { atualizeCategories } from "./API.js";
+
 function convert(dados) { // declarando a função criarTabela e passando o array de objeto "dados" como parâmetro
-    let table = document.createElement("table"); // declarando a variável table como sendo a tabela criada no HTML
+    let table = document.createElement("table");
     let thead = document.createElement("thead"); // declarando a função thead como sendo o thead no HTML
     let headerRow = document.createElement("tr"); // declarando a função headerRow como sendo o tr no HTML, que aqui vai ser a linha de cabeçalho
     let headers = ["Data", "Valor", "Tipo", "Descricao", "Categoria"]; // criando o array headers com as chaves do array de objetos para usar como os headers da tabela
@@ -26,7 +29,7 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
             style: 'currency',
             currency: 'BRL',
         });
-       
+
         let tdValor = document.createElement("td"); // declarando a variável tdValor como sendo um elemento td do HTML
         tdValor.innerText = BRL.format(dado.Valor);// usando a propriedade innerText, passando que o texto do elemento tdValor vai ser o valor formatado para BRL, da chave Valor
         tr.appendChild(tdValor);// appendendo o tdValor à linha tr 
@@ -96,28 +99,6 @@ function convert(dados) { // declarando a função criarTabela e passando o arra
     tabelaContainer.appendChild(table);
 };
 
-function summary() {
-    let buttonSummary = document.createElement('button')
-    buttonSummary
-}
-
-
-async function getTransactionsByYearAndMonth(tipo, mes, ano) {
-    let connect1 = await fetch('http://localhost:8000/transactions'.concat('/', tipo, '/', ano, '/', mes), {
-        method: "GET"
-    }).then((response) => {
-        if (response.ok) {
-            return response.json()
-        }
-        else {
-            throw Error(response.statusText)
-        }
-    })
-
-    return connect1;
-
-}
-
 async function criarTabela() {
     let tipo = document.getElementById("tipo").value
     let data = document.getElementById("mes").value.split('-')
@@ -155,17 +136,4 @@ async function atualizarCategorias(id) {
     }
 }
 
-async function atualizeCategories(transacao_id, categoria) {
-    let connect2 = await fetch('http://localhost:8000/transactions'.concat('/', transacao_id, '/', categoria), {
-        method: "PUT"
-    }).then((response) => {
-        if (response.ok) {
-            return response.json()
-        }
-        else {
-            throw Error(response.statusText)
-        }
-    })
-
-    return connect2;
-}
+window.criarTabela = criarTabela

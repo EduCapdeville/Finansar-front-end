@@ -19,7 +19,7 @@ nav.menu-lateral {
     height: 100%;
     background-color: var(--azul-principal);
     padding: 40px 0px 40px 0;
-    box-shadow: 3px 0 0 var(--azul-variante-claro);
+    box-shadow: 0 0 5px black;
 
     position: fixed;
     top: 0;
@@ -49,7 +49,7 @@ nav.menu-lateral.expandir {
 .btn-expandir > h1 {
     color: #fff;
     font-size: 40px;
-    padding-left: 50px;
+    padding-left: 43px;
 }
 
 ul {
@@ -129,6 +129,17 @@ tr:nth-child(even) {
     text-align: center;
 }
 
+#resultado-saldo {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-saldo {
+    margin-top: 50px;
+}
+
 .Home {
     color: #2e2e2e;
     font-size: 100px;
@@ -144,16 +155,9 @@ tr:nth-child(even) {
     font-size: 30px;
 }
 
-.espaco-superior {
-    padding-top: 150px;
-}
-
-label {
-    font-size: 20px;
-}
-
 button {
     padding: 10px 20px;
+    font-size: 20px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -165,8 +169,20 @@ button {
     transition: ease-in;
 }
 
+
+
 button:hover {
     background-color: var(--azul-principal);
+}
+
+.editar-button {
+    font-size: 5px;
+    padding: 5px 10px;
+}
+
+.att-category {
+    font-size: 5px;
+    padding: 5px 10px;
 }
 
 .input-style {
