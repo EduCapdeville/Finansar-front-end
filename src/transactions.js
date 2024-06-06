@@ -23,7 +23,7 @@ async function criarTabela() {
     // Convertendo dados para DataTables
     $('#tabela-transactions').DataTable({
         data: jsonData,
-        destroy: true, // Destroi qualquer tabela já existente antes de recriar
+        destroy: true,
         columns: [
             { data: 'Data', title: 'Data' },
             { 
@@ -53,7 +53,15 @@ async function criarTabela() {
                     `;
                 }
             }
-        ]
+        ],
+        columnDefs: [
+            { width: '15%', targets: 0 }, // Data
+            { width: '15%', targets: 1 }, // Valor
+            { width: '15%', targets: 2 }, // Tipo
+            { width: '25%', targets: 3 }, // Descricao
+            { width: '30%', targets: 4 }  // Categoria
+        ],
+        responsive: true
     });
 }
 
